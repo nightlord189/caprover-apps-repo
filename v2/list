@@ -1,0 +1,1 @@
+{"oneClickApps":[{"name":"docklogkeeper","displayName":"DockLogKeeper","description":"Simple Docker log viewer, persistently stores logs in a local SQLite database, ensuring both real-time and historical logs are readily accessible.","isOfficial":true,"logoUrl":"docklogkeeper.png"}]}
