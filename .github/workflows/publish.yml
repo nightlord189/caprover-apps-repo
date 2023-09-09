@@ -15,11 +15,7 @@ jobs:
         with:
           node-version: 14
 
-      - run: npm i
-
-      - run: npm ci
-
-      - run: npm run formatter-write && npm run build
+      - run: make build
 
       - name: GitHub Pages Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4

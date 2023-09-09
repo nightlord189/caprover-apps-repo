@@ -7,8 +7,6 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             - $$cap_appname-data:/logs
-        ports:
-            - 3010:3010
         environment:
             PASSWORD: $$cap_password
         caproverExtra:

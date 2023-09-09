@@ -1,0 +1,37 @@
+captainVersion: 4
+version: '3'
+services:
+    $$cap_appname:
+        container_name: s3proxy
+        image: andrewgaul/s3proxy:$$cap_version
+        volumes:
+            - $$cap_appname-data:/data
+        environment:
+            AUTHORIZATION: 'aws-v2-or-v4'
+            S3PROXY_IDENTITY: $$cap_identity
+            S3PROXY_CREDENTIAL: $$cap_credential
+        caproverExtra:
+            containerHttpPort: '80'
+caproverOneClickApp:
+    variables:
+        - id: $$cap_version
+          label: Version
+          defaultValue: 'latest'
+          description: Check out their Docker page for the valid tags https://hub.docker.com/r/andrewgaul/s3proxy/tags
+        - id: $$cap_identity
+          label: Identity
+          defaultValue: $$cap_gen_random_hex(16)
+          description: Identity for authorization
+        - id: $$cap_credential
+          label: Credential
+          defaultValue: $$cap_gen_random_hex(16)
+          description: Credential for authorization
+    instructions:
+        start: |-
+            S3Proxy is starting.
+        end: |-
+            S3Proxy is available at `$$cap_appname.$$cap_root_domain`.
+    displayName: S3Proxy
+    isOfficial: false
+    description: S3Proxy implements the S3 API and proxies requests. Can be used as a simple S3 storage.
+    documentation: Taken from https://github.com/gaul/s3proxy
